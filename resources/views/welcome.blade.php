@@ -28,13 +28,7 @@
 
 <div class="container my-5">
 
-    @php
-        $title = 'Список пользователей!';
-        $second_title = 'Second title';
-    @endphp
-
-    <livewire:user.user-list lastname="Doe" :title="$title" :$second_title />
-{{--    @livewire('user.user-list', ['lastname' => 'Doe', 'title' => $title, 'second_title' => $second_title])--}}
+    <livewire:user.user-list />
 
 </div>
 
