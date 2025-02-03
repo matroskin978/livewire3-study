@@ -28,7 +28,11 @@
 
 <div class="container my-5">
 
-    <livewire:user.user-list />
+    <div class="row">
+        <livewire:user.user-create />
+        <livewire:user.user-list />
+    </div>
+
 
 </div>
 

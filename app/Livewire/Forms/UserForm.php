@@ -22,9 +22,10 @@ class UserForm extends Form
     {
         $validated = $this->validate();
 
-        User::create($validated);
+        $user = User::create($validated);
         $this->reset();
         session()->flash('success', 'User created successfully');
+        return $user;
     }
 
 }
