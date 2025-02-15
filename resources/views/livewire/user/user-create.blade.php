@@ -1,4 +1,4 @@
-<div class="col-md-6">
+<div class="col-md-4">
 
     @if(session('success'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
