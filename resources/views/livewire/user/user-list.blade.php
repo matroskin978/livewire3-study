@@ -2,7 +2,7 @@
 
     <ul id="users-list">
         @forelse($users as $user)
-            <li wire:key="{{ $user->id }}">{{ $user->name }} ({{ $user->email  }})
+            <li wire:key="{{ $user->id }}">{{ $user->name }} ({{ $user->email  }}) | {{ $user->country->name }}
                 | <a href="#"
                      wire:click.prevent="delete({{ $user->id }})"
                      wire:confirm="Are you sure?">Delete</a>
