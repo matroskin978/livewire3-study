@@ -20,6 +20,9 @@ class UserForm extends Form
 
     public string $country_id = '';
 
+    #[Validate('nullable|image|extensions:jpg,jpeg,png|max:2048')]
+    public $avatar;
+
     protected function rules(): array
     {
         return [
@@ -33,6 +36,10 @@ class UserForm extends Form
     public function saveUser()
     {
         $validated = $this->validate();
+        if ($this->avatar) {
+            $folders = date('Y') . '/' . date('m') . '/' . date('d');
+            $validated['avatar'] = $this->avatar->store($folders);
+        }
         $user = User::create($validated);
         $this->reset();
         session()->flash('success', 'User created successfully');

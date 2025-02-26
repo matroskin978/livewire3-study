@@ -5,9 +5,12 @@ namespace App\Livewire\User;
 use App\Livewire\Forms\UserForm;
 use App\Models\Country;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class UserCreate extends Component
 {
+
+    use WithFileUploads;
 
     public UserForm $form;
 

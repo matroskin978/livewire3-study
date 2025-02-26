@@ -32,7 +32,8 @@
 
         <div class="mb-3">
             <div wire:ignore>
-                <select class="form-select select2 @error('form.country_id') is-invalid @enderror" wire:model="country_id">
+                <select class="form-select select2 @error('form.country_id') is-invalid @enderror"
+                        wire:model="country_id">
                     <option selected>Select country</option>
                     @foreach($countries as $country)
                         <option value="{{ $country->id }}">{{ $country->name }}</option>
@@ -41,6 +42,24 @@
             </div>
             @error('form.country_id')
             <div class="invalid-feedback d-block">{{ $message }}</div> @enderror
+        </div>
+
+        <div class="mb-3">
+            <input type="file" class="form-control @error('form.avatar') is-invalid @enderror"
+                   wire:model="form.avatar">
+
+            @error('form.avatar')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+
+            <div wire:loading wire:target="form.avatar">
+                <span class="text-success">Uploading...</span>
+            </div>
+
+            @if (!$errors->has('form.avatar') && $form->avatar)
+                <img src="{{ $form->avatar->temporaryUrl() }}" width="100">
+            @endif
+
         </div>
 
         <div class="d-flex align-items-center gap-3">
@@ -56,7 +75,7 @@
 
 @script
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         let select2 = $('.select2');
 
         select2.select2();
