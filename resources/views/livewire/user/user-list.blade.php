@@ -1,4 +1,4 @@
-<div>
+<div class="col-12">
 
     <ul id="users-list">
         @forelse($users as $user)
