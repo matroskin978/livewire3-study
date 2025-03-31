@@ -3,7 +3,7 @@
 namespace App\Livewire\User;
 
 use App\Models\User;
-use Illuminate\Database\Query\Builder;
+use Illuminate\Database\Eloquent\Builder;
 use Livewire\Attributes\On;
 use Livewire\Attributes\Url;
 use Livewire\Component;
