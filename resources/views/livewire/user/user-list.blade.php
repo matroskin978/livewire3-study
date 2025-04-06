@@ -28,10 +28,18 @@
 
             <thead>
             <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Country</th>
+                <th wire:click="changeOrder('users.id')" style="cursor:pointer;">
+                    <x-sort-arrows fieldName="ID" :orderByField="$orderByField" :orderByDirection="$orderByDirection" :orderByFieldList="$orderByFieldList"/>
+                </th>
+                <th wire:click="changeOrder('users.name')" style="cursor:pointer;">
+                    <x-sort-arrows fieldName="Name" :orderByField="$orderByField" :orderByDirection="$orderByDirection" :orderByFieldList="$orderByFieldList"/>
+                </th>
+                <th wire:click="changeOrder('users.email')" style="cursor:pointer;">
+                    <x-sort-arrows fieldName="Email" :orderByField="$orderByField" :orderByDirection="$orderByDirection" :orderByFieldList="$orderByFieldList"/>
+                </th>
+                <th wire:click="changeOrder('countries.name')" style="cursor:pointer;">
+                    <x-sort-arrows fieldName="Country" :orderByField="$orderByField" :orderByDirection="$orderByDirection" :orderByFieldList="$orderByFieldList"/>
+                </th>
                 <th>Delete</th>
             </tr>
             </thead>
