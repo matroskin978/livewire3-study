@@ -6,8 +6,6 @@ use App\Livewire\Forms\UserForm;
 use App\Models\City;
 use App\Models\Country;
 use App\Models\Street;
-use Livewire\Attributes\Layout;
-use Livewire\Attributes\Title;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 

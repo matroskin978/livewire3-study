@@ -36,50 +36,29 @@
             <div class="invalid-feedback">{{ $message }}</div> @enderror
         </div>
 
-        <div class="mb-3">
-            <div>
-                <select id="country" class="form-select @error('form.country_id') is-invalid @enderror"
-                        wire:model.live="form.country_id">
-                    <option value="" selected>Select country</option>
-                    @foreach($countries as $country)
-                        <option value="{{ $country->id }}" wire:key="{{ $country->id }}">{{ $country->name }}</option>
-                    @endforeach
-                </select>
-            </div>
-            @error('form.country_id')
-            <div class="invalid-feedback d-block">{{ $message }}</div> @enderror
-        </div>
+        <livewire:select-component
+            :items="$countries"
+            wire:model.live="form.country_id"
+            name="country"
+            :key="$countries->pluck('id')->join('-')"
+        />
 
         @if(count($cities))
-            <div class="mb-3">
-                <div>
-                    <select id="city" class="form-select @error('form.city_id') is-invalid @enderror"
-                            wire:model.live="form.city_id">
-                        <option value="" selected>Select city</option>
-                        @foreach($cities as $city)
-                            <option value="{{ $city->id }}" wire:key="{{ $city->id }}">{{ $city->name }}</option>
-                        @endforeach
-                    </select>
-                </div>
-                @error('form.city_id')
-                <div class="invalid-feedback d-block">{{ $message }}</div> @enderror
-            </div>
+            <livewire:select-component
+                :items="$cities"
+                wire:model.live="form.city_id"
+                name="city"
+                :key="$cities->pluck('id')->join('-')"
+            />
         @endif
 
         @if(count($streets))
-            <div class="mb-3">
-                <div>
-                    <select id="street" class="form-select @error('form.street_id') is-invalid @enderror"
-                            wire:model="form.street_id">
-                        <option value="" selected>Select street</option>
-                        @foreach($streets as $street)
-                            <option value="{{ $street->id }}" wire:key="{{ $street->id }}">{{ $street->name }}</option>
-                        @endforeach
-                    </select>
-                </div>
-                @error('form.street_id')
-                <div class="invalid-feedback d-block">{{ $message }}</div> @enderror
-            </div>
+            <livewire:select-component
+                :items="$streets"
+                wire:model="form.street_id"
+                name="street"
+                :key="$streets->pluck('id')->join('-')"
+            />
         @endif
 
         <div class="mb-3">
@@ -110,20 +89,3 @@
     </form>
 
 </div>
-
-{{--@script
-<script>
-    $(document).ready(function () {
-        let select2 = $('.select2');
-
-        select2.select2();
-        select2.on('change', function (e) {
-            $wire.form.country_id = $(this).val();
-            // $wire.set('form.country_id', $(this).val(), false)
-        });
-        $wire.on('user-created', () => {
-            select2.val('Select country').trigger('change');
-        });
-    });
-</script>
-@endscript--}}
